@@ -5,7 +5,7 @@ class Underscore:
     def __init__(self, root_path, replacement_char, chars_to_replace):
         self.root_path = root_path
         self.replacement_char = replacement_char
-        self.pic_extensions = set(['png', 'jpg'])
+        self.pic_extensions = ({'png', 'jpg'})
         self.chars_to_replace = chars_to_replace
 
     def start(self):
@@ -13,7 +13,7 @@ class Underscore:
         return None
 
     def add_underscores(self, path):
-        if (os.path.isdir(path)):
+        if os.path.isdir(path):
             files = os.listdir(path)
             for file in files:
                 file_path = os.path.join(path, file)
@@ -23,10 +23,10 @@ class Underscore:
                     file_parts = file.split('.')
                     if (len(file_parts)) > 1:
                         extension = file_parts[len(file_parts) - 1].lower()
-                        if (extension in self.pic_extensions):
+                        if extension in self.pic_extensions:
                             # this is an image
                             new_file = self.new_file_name(file)
-                            new_file_path = os.path.join(path, new_file)
+                            new_file_path = os.path.join(path, new_file.lower())
                             shutil.move(file_path, new_file_path)
         return None
 
