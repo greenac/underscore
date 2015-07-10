@@ -1,0 +1,4 @@
+provide run.py with the path of the root image directory as the first argument
+
+example:
+python3 run.py /Users/someuser/Documents/images
